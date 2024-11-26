@@ -41,6 +41,12 @@ public class MainController {
         return "hello";
     }
 */
+    @GetMapping("/")
+    public String home(Model model) {
+        model.addAttribute("title", "Home Page");
+        return "index";
+    }
+
 
     @GetMapping("/hello/{name}")
     public String helloRequest(Model model, @PathVariable(value = "name") String name) {
