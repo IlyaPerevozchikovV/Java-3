@@ -5,10 +5,11 @@ import org.springframework.stereotype.Component;
 
 import java.util.Random;
 import java.util.stream.Collectors;
-
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
+
+
 
 @Component
 public class ProductRepository {
@@ -44,6 +45,16 @@ public class ProductRepository {
 
 	public void delete(Long id) {
 		products.stream().filter(p -> p.getId().equals(id)).findFirst().ifPresent(products::remove);
+	}
+
+	public void edit(Long id, String title, Integer price) {
+		products.stream()
+			.filter(p -> p.getId().equals(id))
+			.findFirst()
+			.ifPresent(product -> {
+					product.setTitle(title);
+					product.setPrice(price);
+				});
 	}
 
 	public List<Product> filterProducts(String title, Integer gt, Integer lt)

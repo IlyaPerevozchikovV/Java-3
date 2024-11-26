@@ -1,9 +1,13 @@
 package com.vyatsu.task14.entities;
 
+
 public class Product {
     private Long id;
+
     private String title;
+
     private int price;
+
     private int viewCount;
 
     public Long getId() {

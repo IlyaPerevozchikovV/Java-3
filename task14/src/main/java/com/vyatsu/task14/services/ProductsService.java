@@ -37,5 +37,7 @@ public class ProductsService {
     public List<Product> filterProducts(String title, Integer gt, Integer lt) {
 	    return productRepository.filterProducts(title, gt, lt);
     }
+
+    public void edit(Long id, String title, Integer price) {productRepository.edit(id, title, price);}
 }
 

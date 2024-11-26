@@ -38,6 +38,9 @@
                 <a th:href="@{'/products/show/' + ${product.id}}" th:text="Просмотреть"/>
             </td>
             <td>
+              <a th:href="@{'/products/edit/' + ${product.id}}" th:text="Редактировать"/>
+            </td>
+            <td>
 	      <form th:action="@{'/products/delete/' + ${product.id}}" method="post" style="display:inline;">
                 <button type="submit" style=" color: #007bff; text-decoration: none; background-color: transparent;">Удалить</button>
               </form>
