@@ -34,4 +34,8 @@ public class ProductRepository {
     public void save(Product product) {
         products.add(product);
     }
+
+    public void delete(Long id) {
+		products.stream().filter(p -> p.getId().equals(id)).findFirst().ifPresent(products::remove);
+	}
 }

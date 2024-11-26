@@ -34,6 +34,11 @@ public class MainController {
         return "index";
     }
 
+
+    @GetMapping("/login")
+    public String loginForm() {
+        return "login";
+    }
 /*
     @GetMapping("/hello")
     public String helloRequest(Model model, @RequestParam(value = "name") String name) {
