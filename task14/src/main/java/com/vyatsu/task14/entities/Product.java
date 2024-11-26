@@ -4,6 +4,7 @@ public class Product {
     private Long id;
     private String title;
     private int price;
+    private int viewCount;
 
     public Long getId() {
         return id;
@@ -32,9 +33,10 @@ public class Product {
     public Product() {
     }
 
-    public Product(Long id, String title, int price) {
+    public Product(Long id, String title, int price, int viewCount) {
         this.id = id;
         this.title = title;
         this.price = price;
+	this.viewCount = viewCount;
     }
 }
