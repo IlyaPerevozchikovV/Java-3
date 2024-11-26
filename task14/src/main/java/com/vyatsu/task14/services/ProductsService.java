@@ -28,12 +28,14 @@ public class ProductsService {
         productRepository.save(product);
     }
 
-    public void delete(Long id) {
-	productRepository.delete(id);
-    }
+    public void delete(Long id) {productRepository.delete(id);}
 
     public List<Product> getProductsByTitle(String title) {
         return productRepository.findProductsByTitle(title);
+    }
+
+    public List<Product> filterProducts(String title, Integer gt, Integer lt) {
+	    return productRepository.filterProducts(title, gt, lt);
     }
 }
 
