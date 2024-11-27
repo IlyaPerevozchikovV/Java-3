@@ -28,11 +28,10 @@ public class MainController {
         System.out.println(email);
         return "redirect:/index";
     }
-
-    @GetMapping("/index")
+    /*@GetMapping("/index")
     public String doSomething() {
         return "index";
-    }
+    }*/
 
 
     @GetMapping("/login")

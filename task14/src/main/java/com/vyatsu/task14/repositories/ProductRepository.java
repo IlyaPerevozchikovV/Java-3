@@ -18,8 +18,14 @@ public class ProductRepository {
 	public void init() {
 		products = new ArrayList<>();
 		Random rnd = new Random();
-		for (Long i = 1L; i < 101; i++) {
-			products.add(new Product(i, "Item" + i, rnd.nextInt(500), 0));
+		for (Long i = 1L; i < 21; i++) {
+			products.add(new Product(i, "Milk" + i, rnd.nextInt(500), 0));
+		}
+		for (Long i = 21L; i < 41; i++) {
+			products.add(new Product(i, "Cheese" + i, rnd.nextInt(500), 0));
+		}
+		for (Long i = 41L; i < 61; i++) {
+			products.add(new Product(i, "Bread" + i, rnd.nextInt(500), 0));
 		}
 	}
 

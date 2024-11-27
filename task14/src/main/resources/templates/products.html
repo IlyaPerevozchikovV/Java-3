@@ -12,7 +12,7 @@
 <div class="container">
 
     <form th:action="@{/products}" method="get">
-        <label for="title">Filter by Name:</label>
+        <label for="title">Фильтр по цене и стоимости:</label>
         <input type="text" id="title" name="title" th:value="${param.title}" placeholder="Название" />
 	<input type="text" id="gt" name="gt" th:value="${param.gt}" placeholder="Цена от" />
 	<input type="text" id="lt" name="lt" th:value="${param.lt}" placeholder="Цена до" />
