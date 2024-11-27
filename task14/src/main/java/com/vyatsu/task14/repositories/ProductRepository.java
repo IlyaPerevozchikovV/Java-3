@@ -2,12 +2,16 @@ package com.vyatsu.task14.repositories;
 
 import com.vyatsu.task14.entities.Product;
 import org.springframework.stereotype.Component;
+import org.springframework.data.jpa.domain.Specification;
 
 import java.util.Random;
 import java.util.stream.Collectors;
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.vyatsu.task14.repositories.specification.ListSpecification;
+import com.vyatsu.task14.repositories.specification.ProductSpecification;
 
 
 
@@ -44,6 +48,7 @@ public class ProductRepository {
 	}
 	public Product findById(Long id) {
 		return products.stream().filter(p -> p.getId().equals(id)).findFirst().get();
+
 	}
 	public void save(Product product) {
 		products.add(product);
@@ -69,22 +74,20 @@ public class ProductRepository {
 			return products;
 		}
 
-		List<Product> result = this.products;
+		ListSpecification<Product> spec = ListSpecification.all();
 		if (title != null && !title.isEmpty()) {
-			result = this.findProductsByTitle(title);
+			spec = spec.and(ProductSpecification.hasTitle(title));
 		}
 
 		if (gt != null) {
-			result = result.stream()
-				.filter(product -> product.getPrice() >= gt)
-				.collect(Collectors.toList());
+			spec = spec.and(ProductSpecification.hasPriceGreaterThan(gt));
 		}
 		if (lt != null) {
-			result = result.stream()
-				.filter(product ->  product.getPrice() <= lt)
-				.collect(Collectors.toList());
+			spec = spec.and(ProductSpecification.hasPriceLessThan(lt));
 		}
 
-		return result;
+		return products.stream()
+			.filter(spec::isSatisfiedBy)
+			.collect(Collectors.toList());
 	}
 }
